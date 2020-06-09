@@ -8,15 +8,15 @@ if(CCACHE_PROGRAM)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
 endif()
 
-set(PROJECT_NAME picotcp)
+set(PROJECT_NAME libpicotcp)
 project(${PROJECT_NAME}
     VERSION 0.1.0
     DESCRIPTION "userland network stack"
     LANGUAGES C CXX)
 
-configure_file(include/pico_defines.h.in pico_defines.h)
+configure_file(include/pico_defines.h.in pico_defines.h @ONLY)
   
-add_library(piconet STATIC
+add_library(picotcp STATIC
   ${CMAKE_CURRENT_BINARY_DIR}/include/pico_defines.h
   stack/pico_device.c
   stack/pico_frame.c
@@ -76,6 +76,24 @@ add_library(piconet STATIC
   modules/pico_tftp.c
   modules/pico_udp.c)
 
-target_include_directories(piconet PUBLIC include)
-target_include_directories(piconet PUBLIC modules)
-target_include_directories(piconet PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(picotcp PRIVATE modules)
+
+target_include_directories(picotcp
+    PUBLIC
+        $<INSTALL_INTERFACE:>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+)
+
+add_library(picotcp::picotcp ALIAS picotcp)
+
+export(
+    TARGETS picotcp
+    NAMESPACE picotcp::
+    FILE picotcpTargets.cmake
+)
+install(
+    TARGETS picotcp
+    EXPORT picotcpConfig
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
