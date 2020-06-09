@@ -5,6 +5,7 @@
  *********************************************************************/
 #ifndef INCLUDE_PICO_TAP
 #define INCLUDE_PICO_TAP
+#ifdef PICO_SUPPORT_WIN32
 #include "pico_config.h"
 #include "pico_device.h"
 
@@ -12,6 +13,6 @@
 struct pico_device *pico_tap_create(char *name, uint8_t *mac);
 /* TODO: not implemented yet */
 /* void pico_tap_destroy(struct pico_device *null); */
-
+#endif
 #endif
 

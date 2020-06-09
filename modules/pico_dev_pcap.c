@@ -5,6 +5,7 @@
    Authors: Daniele Lacamera
  *********************************************************************/
 
+#ifdef PICO_SUPPORT_PCAP
 
 #include <pcap.h>
 #include "pico_device.h"
@@ -94,3 +95,5 @@ struct pico_device *pico_pcap_create_live(char *ifname, char *name, uint8_t *mac
 {
     return pico_pcap_create(ifname, name, mac, PICO_PCAP_MODE_LIVE);
 }
+
+#endif

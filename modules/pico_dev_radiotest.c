@@ -8,6 +8,7 @@
 /*******************************************************************************
  * PicoTCP
  ******************************************************************************/
+#ifdef PICO_SUPPORT_RADIO
 
 #include "pico_dev_radiotest.h"
 #include "pico_6lowpan_ll.h"
@@ -484,3 +485,4 @@ struct pico_device *pico_radiotest_create(uint8_t addr, uint8_t area0, uint8_t a
     return (struct pico_device *)lp;
 }
 
+#endif

@@ -14,7 +14,7 @@
  * there is no destroy function, yet
  * it has only been tested on a Windows 7 machine
  *********************************************************************/
-
+#ifdef PICO_SUPPORT_WIN32
 #include "pico_device.h"
 #include "pico_dev_null.h"
 #include "pico_stack.h"
@@ -1099,3 +1099,5 @@ struct pico_device *pico_tap_create(char *name, uint8_t *mac)
 
     return (struct pico_device *)tap;
 }
+
+#endif

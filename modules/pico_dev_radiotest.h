@@ -7,10 +7,11 @@
 
 #ifndef INCLUDE_PICO_DEV_RADIOTEST
 #define INCLUDE_PICO_DEV_RADIOTEST
-
+#ifdef PICO_SUPPORT_RADIO
 #include "pico_device.h"
 #include "pico_config.h"
 
 struct pico_device *pico_radiotest_create(uint8_t addr, uint8_t area0, uint8_t area1, int loop, char *dump);
 
+#endif
 #endif /* INCLUDE_PICO_DEV_RADIOTEST */

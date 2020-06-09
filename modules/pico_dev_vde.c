@@ -4,7 +4,7 @@
 
    Authors: Daniele Lacamera
  *********************************************************************/
-
+#ifdef PICO_SUPPORT_VDE
 #ifndef UNIT_TEST
 #include <libvdeplug.h>
 #endif
@@ -120,3 +120,4 @@ struct pico_device *MOCKABLE pico_vde_create(char *sock, char *name, uint8_t *ma
     return (struct pico_device *)vde;
 }
 
+#endif

@@ -2,18 +2,14 @@
    PicoTCP. Copyright (c) 2012-2017 Altran Intelligent Systems. Some rights reserved.
    See COPYING, LICENSE.GPLv2 and LICENSE.GPLv3 for usage.
 
-
  *********************************************************************/
-#ifndef INCLUDE_PICO_VDE
-#define INCLUDE_PICO_VDE
+#ifndef INCLUDE_PICO_PIPE
+#define INCLUDE_PICO_PIPE
 #include "pico_config.h"
 #include "pico_device.h"
-#ifdef PICO_SUPPORT_VDE
-#include <libvdeplug.h>
 
-void pico_vde_destroy(struct pico_device *vde);
-struct pico_device *pico_vde_create(char *sock, char *name, uint8_t *mac);
-void pico_vde_set_packetloss(struct pico_device *dev, uint32_t in_pct, uint32_t out_pct);
+void pico_pipe_destroy(struct pico_device *ipc);
+struct pico_device *pico_pipe_create(int fds[2], const char * name, const uint8_t *mac);
 
 #endif
-#endif
+
