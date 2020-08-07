@@ -40,9 +40,9 @@ add_library(picotcp STATIC
   modules/pico_dev_ppp.c
   modules/pico_dev_radio_mgr.c
   modules/pico_dev_radiotest.c
-  modules/pico_dev_tap.c
-  modules/pico_dev_tap_windows.c
-  modules/pico_dev_tun.c
+#  modules/pico_dev_tap.c
+#  modules/pico_dev_tap_windows.c
+#  modules/pico_dev_tun.c
   modules/pico_dev_vde.c
   modules/pico_dhcp_client.c
   modules/pico_dhcp_common.c
